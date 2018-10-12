@@ -36,7 +36,15 @@ public class main {
             String response = "";
             while (!response.equals("correct"))
             {
-                guess = (min+max)/2;
+                guess = ((min+max)/2)+1;
+                if (guess > 100)
+                {
+                    guess = 100;
+                }
+                if (guess < 1)
+                {
+                    guess = 1;
+                }
                 System.out.println("Is your number "+guess+"?");
                 response = input.nextLine();
                 if (!response.equals("lower") && !response.equals("higher") && (!response.equals("correct")))
@@ -53,6 +61,13 @@ public class main {
                     min = guess;
                     guessNum = guessNum+1;
                 }
+                if ((guess==2) && response.equals("lower"))
+                {
+                    guess = 1;
+                    guessNum = guessNum + 1;
+                    response = "correct";
+                }
+
 
             }
             if(guessNum != 1)
