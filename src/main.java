@@ -32,9 +32,38 @@ public class main {
             System.out.println("Ok I will try to guess your number. Make sure it is between 0 and 100.");
             int min = 0;
             int max = 100;
+            int guess = 50;
+            String response = "";
+            while (!response.equals("correct"))
+            {
+                guess = (min+max)/2;
+                System.out.println("Is your number "+guess+"?");
+                response = input.nextLine();
+                if (!response.equals("lower") && !response.equals("higher") && (!response.equals("correct")))
+                {
+                    System.out.println("Sorry, I don't understand your response. Please choose either correct, higher, or lower.");
+                }
+                if (response.equals("lower"))
+                {
+                    max = guess;
+                    guessNum = guessNum+1;
+                }
+                if (response.equals("higher"))
+                {
+                    min = guess;
+                    guessNum = guessNum+1;
+                }
+
+            }
+            if(guessNum != 1)
+            {
+                System.out.println("I got it! Your number is " + guess + "! That took me " + guessNum + " tries to get right!");
+            }
+            else
+            {
+                System.out.println("I got it! Your number is "+guess+"! That took me "+guessNum+" try to get right!");
+            }
+
         }
     }
 }
-
-
-//set a min max, whenever the person answers, change min and max accordingly
